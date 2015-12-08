@@ -31,6 +31,4 @@ var styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('HackerNews', () => HackerNews);
-
 module.exports = HackerNews;

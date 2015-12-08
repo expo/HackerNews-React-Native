@@ -6,9 +6,10 @@ GitHub Project: https://github.com/iSimar/HackerNews-React-Native
 'use strict';
 
 var React = require('react-native');
-var WebIntent = require('react-native-webintent');
+//var WebIntent = require('react-native-webintent');
 
 var {
+  IntentAndroid,
   StyleSheet,
   Text,
   View,
@@ -190,7 +191,14 @@ var Post = React.createClass({
     //WebView is not yet supported on android
     //Open post link in browser, change this
     //when WebView drops for android
-    WebIntent.open(this.state.post_url);
+    //WebIntent.open(this.state.post_url);
+    IntentAndroid.canOpenURL(this.state.post_url, (supported) => {
+      if (supported) {
+        IntentAndroid.openURL(this.state.post_url);
+      } else {
+        console.log('Don\'t know how to open URI: ' + this.state.post_url);
+      }
+    });
     return;
     // this.props.nav.push({
     //   id: 'WebView',

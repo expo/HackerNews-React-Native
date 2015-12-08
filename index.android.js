@@ -5,6 +5,7 @@ var React = require('react-native');
 var {
   AppRegistry,
   StyleSheet,
+  NativeModules,
   Navigator,
   ToolbarAndroid,
   View,
@@ -18,6 +19,10 @@ var PostView = require('./App/Views/Post');
 var WebView = require('./App/Views/Web');
 var _navigator;
 
+let {
+  ExponentConstants
+} = NativeModules;
+
 var NavToolbar = React.createClass({
 
   componentWillMount: function() {
@@ -27,20 +32,24 @@ var NavToolbar = React.createClass({
   render: function () {
     if (this.props.navIcon) {
       return (
-        <ToolbarAndroid
-          style={styles.toolbar}
-          navIcon={{uri: "ic_arrow_back_white_24dp", isStatic: true}}
-          onIconClicked={this.props.navigator.pop}
-          titleColor="#ffffff"
-          title='Hacker News - Top Stories' />
+        <View style={{backgroundColor: '#FF6600'}}>
+          <ToolbarAndroid
+            style={styles.toolbar}
+            navIcon={{uri: "https://d3lwq5rlu14cro.cloudfront.net/hackernews/ic_arrow_back_white_24dp.png"}}
+            onIconClicked={this.props.navigator.pop}
+            titleColor="#ffffff"
+            title='Hacker News - Top Stories' />
+        </View>
       )
     }
     return (
-      <ToolbarAndroid
-        style={styles.toolbar}
-        onIconClicked={this.props.navigator.pop}
-        titleColor="#ffffff"
-        title='Hacker News - Top Stories' />
+      <View style={{backgroundColor: '#FF6600'}}>
+        <ToolbarAndroid
+          style={styles.toolbar}
+          onIconClicked={this.props.navigator.pop}
+          titleColor="#ffffff"
+          title='Hacker News - Top Stories' />
+      </View>
     )
   }
 })
@@ -101,10 +110,9 @@ var styles = StyleSheet.create({
   },
   toolbar: {
     backgroundColor: '#FF6600',
+    marginTop: ExponentConstants.statusBarHeight,
     height: 56,
   }
 });
-
-AppRegistry.registerComponent('HackerNews', () => HackerNews);
 
 module.exports = HackerNews;

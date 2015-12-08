@@ -2,11 +2,17 @@
   "name": "HackerNews",
   "version": "0.0.1",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "start": "node_modules/react-native/packager/packager.sh"
   },
   "dependencies": {
-    "react-native": "^0.11.0",
-    "react-native-webintent": "^1.0.1"
+    "react-native": "exponentjs/react-native#2015-11-13"
+  },
+  "exp": {
+    "name": "HackerNews by iSimar",
+    "primaryColor": "#F6F6EF",
+    "orientation": "portrait",
+    "iconUrl": "https://d3lwq5rlu14cro.cloudfront.net/hackernews/icon_ycom@2x.png"
   }
 }
